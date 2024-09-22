@@ -1,7 +1,6 @@
 ---
-import { X } from "lucide-react";
-import SideBar from "../components/SideBar.astro";
-
+import { MoveRight } from "lucide-react";
+import Header from "../components/Header.astro";
 interface Props {
     title: string;
     description: string;
@@ -9,6 +8,8 @@ interface Props {
 
 const { title = "Clean Life", description = "Astro description" }: Props =
     Astro.props;
+
+const linkList = ["home", "about", "work", "contact"];
 ---
 
 <!doctype html>
@@ -23,35 +24,12 @@ const { title = "Clean Life", description = "Astro description" }: Props =
         <title>{title}</title>
     </head>
     <body
-        class="w-full min-h-screen bg-neutral-100 overflow-x-hidden flex flex-col gap-4 justify-start items-center relative"
+        class="w-full min-h-screen bg-zinc-50 text-zinc-600 overflow-x-hidden flex flex-col gap-4 justify-center items-center relative"
     >
-        <slot />
-      <SideBar />
+    <Header/>
+    <slot />
     </body>
 </html>
-
-<style>
-    @font-face {
-        font-family: "honor";
-        src: url("/HONORSansArabicUI-M.ttf");
-    }
-    :root {
-        --primary-color: #115e59;
-        --secondary-color: #fcd34d;
-        --primary--text: #172554;
-        --secondary--text: var(--secondary-color);
-    }
-    body {
-        font-family: "honor";
-        text-align: right;
-        direction: rtl;
-    }
-    * {
-        color: #172554;
-    }
-
-  
-</style>
 
 <script is:inline>
     const theme = (() => {
@@ -73,6 +51,4 @@ const { title = "Clean Life", description = "Astro description" }: Props =
         document.documentElement.classList.add("dark");
     }
     window.localStorage.setItem("theme", theme);
-
-    
 </script>
